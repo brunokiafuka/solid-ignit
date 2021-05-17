@@ -11,7 +11,10 @@ class ListAllUsersController {
 
       return response.json(this.listAllUsersUseCase.execute({ user_id }));
     } catch (error) {
-      return response.status(400).json({ error });
+      console.log(error);
+      return response
+        .status(401)
+        .json({ error: "User doesn't have enough privileges" });
     }
   }
 }
